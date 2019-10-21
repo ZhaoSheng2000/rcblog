@@ -14,6 +14,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <Layout>
+
                 <Header>
                     <div className="myLogo"/>
                     <Menu
