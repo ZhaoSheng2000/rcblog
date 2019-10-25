@@ -63,7 +63,7 @@ class login extends React.Component {
 
                         <Form.Item>
                             <Button type="primary" htmlType="submit" block onClick={this.login}>
-                                Log in
+                                登陆
                             </Button>
                         </Form.Item>
                     </Form>
