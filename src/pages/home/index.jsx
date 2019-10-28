@@ -1,33 +1,77 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import {Layout, Menu, Icon} from 'antd';
-import Footer from "../../common/footer";
+import {Layout, Menu, Icon, AutoComplete, Input} from 'antd';
+import Footer from "../../common/footer/index";
 import {Footer10DataSource} from "../../common/footer/data.source";
 import './logo.less';
+import './search.less'
 
 
-import tuijian from "../tuijian";
-import guanzhu from "../guanzhu";
-import Python from "../python";
-import Java from "../Java";
-import qianduan from "../qianduan";
-import jiagou from "../jiagou";
-import suanfa from "../suanfa";
-import shujuku from "../shujuku";
-import game from "../youxikaifa";
-import yidong from "../yidongkaifa";
-import rengongzhineng from "../rengongzhineng";
-import anquan from "../anquan";
-import jisuanji from "../jisuanji";
-import yinshipin from "../yinshipin";
-import qita from "../qita";
+import tuijian from "../mySlider/tuijian";
+import guanzhu from "../mySlider/guanzhu";
+import Python from "../mySlider/python";
+import Java from "../mySlider/java";
+import qianduan from "../mySlider/qianduan";
+import jiagou from "../mySlider/jiagou";
+import suanfa from "../mySlider/suanfa";
+import shujuku from "../mySlider/shujuku";
+import game from "../mySlider/youxikaifa";
+import yidong from "../mySlider/yidongkaifa";
+import rengongzhineng from "../mySlider/rengongzhineng";
+import anquan from "../mySlider/anquan";
+import jisuanji from "../mySlider/jisuanji";
+import yinshipin from "../mySlider/yinshipin";
+import qita from "../mySlider/qita";
 import chuangzuo from "../chuangzuo";
+import sousuo from '../mySlider/sousuo'
+import Message from "../xiaoxi";
 
 const {SubMenu} = Menu;
 const {Header, Content, Sider} = Layout;
+const {Option, OptGroup} = AutoComplete;
+
+const dataSource = [
+    {
+        title: '热门搜索',
+        children: [
+            {
+                title: 'zzuli',
+                count: 73010,
+            },
+            {
+                title: 'AntDesign UI',
+                count: 60100,
+            },
+            {
+                title: 'AntDesign',
+                count: 30010,
+            },
+        ],
+    }
+];
+
+
+const options = dataSource
+    .map(group => (
+        <OptGroup key={group.title}>
+            {group.children.map(opt => (
+                <Option key={opt.title} value={opt.title}>
+                    {opt.title}
+                    <span className="certain-search-item-count">{opt.count} 热度</span>
+                </Option>
+            ))}
+        </OptGroup>
+    ));
+
+
 export default class Home extends React.Component {
 
+    state = {
+        search: ''
+    };
+
     render() {
+
         return (
             <Layout>
                 <Header>
@@ -45,18 +89,22 @@ export default class Home extends React.Component {
                         <Menu.Item key="5"><a href={'/#/writing'}><Icon type="edit"/>创作</a></Menu.Item>
                         <SubMenu
                             title={
-                                <span className="submenu-title-wrapper">
+                                <span className="submenu-title-wrapper" onClick={event =>{this.props.history.push('/msg')}}>
                                 <Icon type="bell"/>
                                     消息
                                 </span>
                             }
                         >
-                            <Menu.Item key="bell:1"><Icon type="sound"/>公告</Menu.Item>
+                            <Menu.Item key="bell:1">
+                                <a href={'/#/msg'}>
+                                    <Icon type="sound"/>公告
+                                </a>
+
+                            </Menu.Item>
                             <Menu.Item key="bell:2"><Icon type="message"/>评论</Menu.Item>
                             <Menu.Item key="bell:3"><Icon type="star"/>关注</Menu.Item>
                             <Menu.Item key="bell:4"><Icon type="like"/>点赞</Menu.Item>
                             <Menu.Item key="bell:5"><Icon type="bell"/>系统通知</Menu.Item>
-
                         </SubMenu>
                         <SubMenu
                             title={
@@ -65,7 +113,6 @@ export default class Home extends React.Component {
                                     我的
                                 </span>
                             }>
-                            <Menu.Item key="my:1"><a href={'/#/focus'}><Icon type="star"/>我的关注</a></Menu.Item>
                             <Menu.Item key="my:2"><Icon type="book"/>我的收藏</Menu.Item>
                             <Menu.Item key="my:3"><Icon type="idcard"/>个人中心</Menu.Item>
                             <Menu.Item key="my:4"><Icon type="setting"/>账号设置</Menu.Item>
@@ -73,6 +120,26 @@ export default class Home extends React.Component {
                             <Menu.Item key="my:7"><Icon type="interaction"/>管理博客</Menu.Item>
                             <Menu.Item key="my:6"><Icon type="export"/>退出</Menu.Item>
                         </SubMenu>
+                        <SubMenu title={
+                            <div className="certain-category-search-wrapper" style={{width: 250}}>
+                                <AutoComplete
+                                    className="certain-category-search"
+                                    dropdownClassName="certain-category-search-dropdown"
+                                    dropdownMatchSelectWidth={false}
+                                    dropdownStyle={{width: 300}}
+                                    size="large"
+                                    style={{width: '100%'}}
+                                    dataSource={options}
+                                    placeholder="搜索文章"
+                                    optionLabelProp="value"
+                                    onChange={value => this.setState({search: value})}
+                                >
+                                    <Input suffix={<Icon type="search" onClick={() =>this.props.history.push('/search')} className="certain-category-icon"/>}/>
+                                </AutoComplete>
+                            </div>
+                        }/>
+
+
                     </Menu>
                 </Header>
                 <Content style={{padding: '0 50px'}}>
@@ -102,7 +169,7 @@ export default class Home extends React.Component {
                                 <Menu.Item key="15"><a href={'/#/other'}>其他</a></Menu.Item>
                             </Menu>
                         </Sider>
-                        <Content style={{padding: '0 24px', minHeight: 280,background: '#f5f6f7'}}>
+                        <Content style={{padding: '0 24px', minHeight: 280, background: '#f5f6f7'}}>
                             <Switch>
                                 <Route path={'/tuijian'} component={tuijian}/>
                                 <Route path={'/focus'} component={guanzhu}/>
@@ -120,10 +187,9 @@ export default class Home extends React.Component {
                                 <Route path={'/avi'} component={yinshipin}/>
                                 <Route path={'/other'} component={qita}/>
                                 <Route path={'/writing'} component={chuangzuo}/>
+                                <Route path={'/search'} component={sousuo}/>
+                                <Route path={'/msg'} component={Message}/>
                                 <Route component={tuijian}/>
-
-
-
                             </Switch>
                         </Content>
                     </Layout>

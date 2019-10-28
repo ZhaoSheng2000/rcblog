@@ -1,6 +1,7 @@
 import React from 'react'
 import 'braft-editor/dist/index.css'
 import BraftEditor from 'braft-editor'
+
 import { Input } from 'antd';
 const { Search } = Input;
 
