@@ -25,6 +25,10 @@ import qita from "../mySlider/qita";
 import chuangzuo from "../chuangzuo";
 import sousuo from '../mySlider/sousuo'
 import Message from "../xiaoxi";
+import Mine from "../mine";
+import Download from "../download";
+import Wenda from "../QandA";
+import Article from "../articleDetails";
 
 const {SubMenu} = Menu;
 const {Header, Content, Sider} = Layout;
@@ -83,40 +87,41 @@ export default class Home extends React.Component {
                         style={{lineHeight: '64px'}}
                     >
                         <Menu.Item key="1"><a href={'/#/'}><Icon type="home"/>首页</a></Menu.Item>
-                        <Menu.Item key="2"><Icon type="container"/>博客</Menu.Item>
-                        <Menu.Item key="3"><Icon type="download"/>下载</Menu.Item>
-                        <Menu.Item key="4"><Icon type="bulb"/>问答</Menu.Item>
+                        <Menu.Item key="3"><a href={'/#/download'}><Icon type="download"/>下载</a> </Menu.Item>
+                        <Menu.Item key="4"><a href={'/#/QA'}><Icon type="bulb"/>问答</a> </Menu.Item>
                         <Menu.Item key="5"><a href={'/#/writing'}><Icon type="edit"/>创作</a></Menu.Item>
                         <SubMenu
                             title={
-                                <span className="submenu-title-wrapper" onClick={event =>{this.props.history.push('/msg')}}>
+                                <span className="submenu-title-wrapper" onClick={() =>{this.props.history.push('/msg')}}>
                                 <Icon type="bell"/>
                                     消息
                                 </span>
                             }
                         >
                             <Menu.Item key="bell:1">
-                                <a href={'/#/msg'}>
+                                <a href={'/#/msg/notice'}>
                                     <Icon type="sound"/>公告
                                 </a>
 
                             </Menu.Item>
-                            <Menu.Item key="bell:2"><Icon type="message"/>评论</Menu.Item>
+                            <Menu.Item key="bell:2">
+                                <a href={'/#/msg/comment'}>
+                                <Icon type="message"/>评论
+                                </a>
+                            </Menu.Item>
                             <Menu.Item key="bell:3"><Icon type="star"/>关注</Menu.Item>
                             <Menu.Item key="bell:4"><Icon type="like"/>点赞</Menu.Item>
                             <Menu.Item key="bell:5"><Icon type="bell"/>系统通知</Menu.Item>
                         </SubMenu>
                         <SubMenu
                             title={
-                                <span className="submenu-title-wrapper">
+                                <span className="submenu-title-wrapper" onClick={()=>{this.props.history.push('/mine')}}>
                                     <Icon type="user"/>
                                     我的
                                 </span>
                             }>
                             <Menu.Item key="my:2"><Icon type="book"/>我的收藏</Menu.Item>
                             <Menu.Item key="my:3"><Icon type="idcard"/>个人中心</Menu.Item>
-                            <Menu.Item key="my:4"><Icon type="setting"/>账号设置</Menu.Item>
-                            <Menu.Item key="my:5"><Icon type="inbox"/>我的博客</Menu.Item>
                             <Menu.Item key="my:7"><Icon type="interaction"/>管理博客</Menu.Item>
                             <Menu.Item key="my:6"><Icon type="export"/>退出</Menu.Item>
                         </SubMenu>
@@ -189,6 +194,11 @@ export default class Home extends React.Component {
                                 <Route path={'/writing'} component={chuangzuo}/>
                                 <Route path={'/search'} component={sousuo}/>
                                 <Route path={'/msg'} component={Message}/>
+                                <Route path={'/mine'} component={Mine}/>
+                                <Route path={'/download'} component={Download}/>
+                                <Route path={'/article'} component={Article}/>
+                                <Route path={'/QA'} component={Wenda}/>
+
                                 <Route component={tuijian}/>
                             </Switch>
                         </Content>

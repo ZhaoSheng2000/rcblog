@@ -61,7 +61,6 @@ export default class Message extends React.Component {
                         <Route path={'/msg/comment'} component={Pinglun}/>
                         <Route path={'/msg/inform'} component={Tongzhi}/>
                         <Route  component={Tongzhi}/>
-
                     </Switch>
                 </Content>
             </div>
