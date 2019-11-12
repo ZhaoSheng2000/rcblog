@@ -5,6 +5,7 @@ import Footer from "../../common/footer/index";
 import {Footer10DataSource} from "../../common/footer/data.source";
 import './logo.less';
 import './search.less'
+import Cookies from "js-cookie"
 
 
 import tuijian from "../mySlider/tuijian";
@@ -29,6 +30,7 @@ import Mine from "../mine";
 import Download from "../download";
 import Wenda from "../QandA";
 import Article from "../articleDetails";
+
 
 const {SubMenu} = Menu;
 const {Header, Content, Sider} = Layout;
@@ -72,6 +74,12 @@ export default class Home extends React.Component {
 
     state = {
         search: ''
+    };
+    logout =()=>{
+        Cookies.remove('userId');
+        Cookies.remove('token');
+        this.props.history.push('/login');
+        window.location.reload();
     };
 
     render() {
@@ -123,7 +131,7 @@ export default class Home extends React.Component {
                             <Menu.Item key="my:2"><Icon type="book"/>我的收藏</Menu.Item>
                             <Menu.Item key="my:3"><Icon type="idcard"/>个人中心</Menu.Item>
                             <Menu.Item key="my:7"><Icon type="interaction"/>管理博客</Menu.Item>
-                            <Menu.Item key="my:6"><Icon type="export"/>退出</Menu.Item>
+                            <Menu.Item key="my:6" onClick={this.logout}><Icon type="export"/>退出</Menu.Item>
                         </SubMenu>
                         <SubMenu title={
                             <div className="certain-category-search-wrapper" style={{width: 250}}>

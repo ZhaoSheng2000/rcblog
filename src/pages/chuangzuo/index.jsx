@@ -10,6 +10,7 @@ export default class chuangzuo extends React.Component {
     state = {
         editorState: BraftEditor.createEditorState('<p>开始你的创作！</p>'),
         outputHTML: '',
+        outputRaw:'',
         title:''
     };
 
@@ -17,7 +18,9 @@ export default class chuangzuo extends React.Component {
         this.setState({
             editorState: editorState,
             outputHTML: editorState.toHTML(),
+            outputRaw: editorState.toRAW()
         });
+        console.log(this.state.outputRaw);
         console.log(this.state.outputHTML)
     };
 

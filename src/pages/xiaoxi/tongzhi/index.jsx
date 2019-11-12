@@ -5,7 +5,7 @@ export default class Tongzhi extends React.Component {
     render() {
         return (
             <div>
-                <Card title="系统通知(接口没写)" style={{marginTop: 20}}>
+                <Card title="系统通知(开发中)" style={{marginTop: 20}}>
                     <Empty
                         description={
                             <span>

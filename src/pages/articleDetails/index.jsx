@@ -86,7 +86,7 @@ export default class Article extends React.Component {
 
 
     render() {
-        const { likes, dislikes, action,comments, submitting, value } = this.state;
+        const { likes,  action,comments, submitting, value } = this.state;
 
         const actions = [
             <span key="comment-basic-like">
@@ -99,12 +99,7 @@ export default class Article extends React.Component {
         </Tooltip>
         <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
       </span>,
-            <span key=' key="comment-basic-dislike"'>
-        <Tooltip title="Dislike">
-        </Tooltip>
-        <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
-      </span>,
-            <span key="comment-basic-reply-to" >}>Reply to</span>,
+            <span key="comment-basic-reply-to" >Reply to</span>,
         ];
 
 
@@ -136,19 +131,6 @@ export default class Article extends React.Component {
                                 prototypes beautifully and efficiently.
                             </Paragraph>
 
-                            <Paragraph>
-                                <ul>
-                                    <li>
-                                        <a href="">Principles</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Patterns</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Resource Download</a>
-                                    </li>
-                                </ul>
-                            </Paragraph>
 
                             <Divider />
 
@@ -168,19 +150,6 @@ export default class Article extends React.Component {
                                 <Text code>Axure</Text>），来帮助业务快速设计出高质量的产品原型。
                             </Paragraph>
 
-                            <Paragraph>
-                                <ul>
-                                    <li>
-                                        <a href="">设计原则</a>
-                                    </li>
-                                    <li>
-                                        <a href="">设计模式</a>
-                                    </li>
-                                    <li>
-                                        <a href="">设计资源</a>
-                                    </li>
-                                </ul>
-                            </Paragraph>
                         </Typography>
                         <br/>
                         <hr/>
@@ -205,7 +174,7 @@ export default class Article extends React.Component {
                         </div>
                         <Comment
                             actions={actions}
-                            author={<a>Han Solo</a>}
+                            author={<a href={'/'}>Han Solo</a>}
                             avatar={
                                 <Avatar
                                     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -231,7 +200,7 @@ export default class Article extends React.Component {
                     </Col>
 
                     <Col span={6}>
-                        <Card title="作者简略信息" extra={<a href="">个人主页</a>} style={{ marginTop:20 }}>
+                        <Card title="作者简略信息" extra={<a href="/">个人主页</a>} style={{ marginTop:20 }}>
                             <p>Card content</p>
                             <p>Card content</p>
                             <p>Card content</p>

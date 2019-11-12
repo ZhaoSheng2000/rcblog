@@ -138,7 +138,6 @@ export default class tuijian extends React.Component {
                                     </List.Item>
                                 )}
                             />
-
                         </Col>
                     </Col>
                     <Col span={6}>
@@ -167,14 +166,8 @@ export default class tuijian extends React.Component {
                             >
                                 Inner Card content
                             </Card>
-
                         </Card>
-
-
                     </Col>
-                </Row>
-                <Row gutter={18}>
-
                 </Row>
             </div>
         )

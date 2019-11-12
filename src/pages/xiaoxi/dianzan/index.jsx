@@ -5,7 +5,7 @@ export default class Dianzan extends React.Component {
     render() {
         return (
             <div>
-                <Card title="点赞(接口没写)" style={{marginTop: 20}}>
+                <Card title="点赞(开发中)" style={{marginTop: 20}}>
                     <Empty
                         description={
                             <span>

@@ -6,7 +6,7 @@ export default class Shoucang extends React.Component {
 
         return (
             <div>
-                <Card title="收藏（接口没写）" style={{marginTop:20}}>
+                <Card title="收藏（开发中）" style={{marginTop:20}}>
                     <Empty
                         description={
                             <span>

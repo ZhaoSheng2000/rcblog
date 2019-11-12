@@ -21,7 +21,7 @@ export const Footer10DataSource = {
           children: [
             {
               name: 'content0',
-              children: '软创技术社区——专业技术发表平台.',
+              children: 'RCblog技术社区——专业技术发表平台.',
             },
           ],
         },
